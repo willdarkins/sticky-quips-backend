@@ -1,22 +1,23 @@
+//using notes router to separate api routes
 const express = require('express');
-var router = express.Router()
+var notesRouter = express.Router();
 
-// notes (/notes)
-router.get('/', (req, res) => {
+notesRouter.get('/', (req, res) => {
     const notes = [
         {
-            text: "Fuck a goat",
+            text: "Get cat food",
             link: "https://petco.com"
         },
         {
-            text: "jerk off",
-            link: "https://pornhub.com"
+            text: "Eat lunch",
+            link: "https://panera.com"
         },
 
     ]
     res.json({notes})
 })
 
-module.exports = function() {
-    return router;
+//exporting router object to be used in outer-most index.js as object
+module.exports = {
+    notesRouter
 }
