@@ -1,20 +1,18 @@
 //using notes router to separate api routes
 const express = require('express');
+const mongoose = require('mongoose');
+const Note = require('../../db/models/note.model')
 var notesRouter = express.Router();
 
 notesRouter.get('/', (req, res) => {
-    const notes = [
-        {
-            text: "Get cat food",
-            link: "https://petco.com"
-        },
-        {
-            text: "Eat lunch",
-            link: "https://panera.com"
-        },
-
-    ]
-    res.json({notes})
+    Note.find({}, (err, notes) => {
+        if (err) {
+            return console.error(err)
+        };
+        res.json({
+            notes
+        })
+    })
 })
 
 //exporting router object to be used in outer-most index.js as object
