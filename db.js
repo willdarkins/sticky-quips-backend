@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
 
+//establishing connection to database
 async function main() {
   await mongoose.connect('mongodb://localhost:27017/notes-db', {
       useNewUrlParser: true,
