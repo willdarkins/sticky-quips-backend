@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
     res.send("hello world!!!")
 })
 
+//improting notes api from the api folder
 app.use('/notes' , notesRouter);
 
 app.listen(port, () => {
