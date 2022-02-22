@@ -25,6 +25,7 @@ notesRouter.get('/:id', (req, res) => {
 
 //post a note
 notesRouter.post('/', (req, res) => {
+    console.log(req.body)
     res.json({
         reply: 'note created'
     })
