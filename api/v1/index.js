@@ -87,7 +87,7 @@ notesRouter.put('/:id', (request, response) => {
         }
         response.json({
             reply: "Note has been updated successfully!",
-            updatedNote
+            updatedBody
         })
     })
     
