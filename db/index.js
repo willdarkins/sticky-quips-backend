@@ -4,7 +4,7 @@ main().catch(err => console.log(err));
 
 //establishing connection to database
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/notes-db', {
+  await mongoose.connect('mongodb+srv://willdarkins:Finley2021@cluster0.j0rs2.mongodb.net/notes-db?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true
   });
