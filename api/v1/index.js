@@ -51,14 +51,15 @@ notesRouter.post('/', (req, res) => {
 
 })
 
-//delete note by ID
+//delete note by ID... similar logic to retrieving the note by ID except we're using the findByIdAndRemove method from MongoDB...
+//then passing that delted note with the argument 'deletedNote' and returning a success message
 notesRouter.delete('/:id', (request, response) => {
     const noteId = request.params.id;
-    Note.findByIdAndRemove(noteId, (err, res) => {
+    Note.findByIdAndRemove(noteId, (err, deltedNote) => {
         if(err){
             return console.log(err);
         }
-        if(!res) {
+        if(!deltedNote) {
             return response.status(404).json({
                 message: "That note could not be deleted becasue the ID does not exist."
             });
@@ -67,6 +68,29 @@ notesRouter.delete('/:id', (request, response) => {
             reply: "delete note by id success"
         })
     }) 
+})
+
+//update note by ID... we're going to find the note by ID but also create a variable to store the updated note(body text)...
+//the varibale ID and updated body will pass throug the findOneAndUpdate method via MongoDB, along with error and updatedNote...
+//which will be returned in the response.json
+notesRouter.put('/:id', (request, response) => {
+    const noteId = request.params.id;
+    const updatedBody = request.body;
+    Note.findOneAndUpdate(noteId, updatedBody, (err, updatedNote) => {
+        if(err){
+            console.log(err);
+        }
+        if(!updatedNote){
+            return response.status(404).json({
+                message:"Note was not found to update"
+            })
+        }
+        response.json({
+            reply: "Note has been updated successfully!",
+            updatedNote
+        })
+    })
+    
 })
 
 //exporting router object to be used in outer-most index.js as object
