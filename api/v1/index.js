@@ -1,6 +1,5 @@
 //using notes router to separate api routes
 const express = require('express');
-const mongoose = require('mongoose');
 const Note = require('../../db/models/note.model')
 var notesRouter = express.Router();
 
@@ -16,12 +15,21 @@ notesRouter.get('/', (req, res) => {
     })
 })
 
-//get individual note by ID
+//get individual note by ID... We're getting the note id from the params then filtering it through the MongoDB findById method...
+//the Note model will be targeted and information will come from that in the form of 'note'... then displayed as res.json
 notesRouter.get('/:id', (req, res) => {
-    res.json({
-        reply: 'note by id success'
+    const noteId = req.params.id;
+    Note.findById(noteId, (err, note) => {
+        if(err) {
+            return console.log(err)
+        }
+        res.json({
+            reply: 'note by id success',
+            note
+        })
     })
-})
+    })
+
 
 //post a note ... sending a request to get the body text then assign to new variable and save varibale...
 //that variable is then passed with arbitrary 'savedNote' passed and given a response
