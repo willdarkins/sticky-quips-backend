@@ -1,4 +1,5 @@
 //using notes router to separate api routes
+const { response } = require('express');
 const express = require('express');
 const Note = require('../../db/models/note.model')
 var notesRouter = express.Router();
@@ -20,15 +21,20 @@ notesRouter.get('/', (req, res) => {
 notesRouter.get('/:id', (req, res) => {
     const noteId = req.params.id;
     Note.findById(noteId, (err, note) => {
-        if(err) {
+        if (err) {
             return console.log(err)
+        }
+        if (!note) {
+            return res.status(404).json({
+                message: "Note is not found"
+            })
         }
         res.json({
             reply: 'note by id success',
             note
         })
     })
-    })
+})
 
 
 //post a note ... sending a request to get the body text then assign to new variable and save varibale...
@@ -46,10 +52,21 @@ notesRouter.post('/', (req, res) => {
 })
 
 //delete note by ID
-notesRouter.delete('/:id', (req, res) => {
-    res.json({
-        reply: 'note has been deleted'
-    })
+notesRouter.delete('/:id', (request, response) => {
+    const noteId = request.params.id;
+    Note.findByIdAndRemove(noteId, (err, res) => {
+        if(err){
+            return console.log(err);
+        }
+        if(!res) {
+            return response.status(404).json({
+                message: "That note could not be deleted becasue the ID does not exist."
+            });
+        }
+        response.json({
+            reply: "delete note by id success"
+        })
+    }) 
 })
 
 //exporting router object to be used in outer-most index.js as object
