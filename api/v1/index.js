@@ -23,12 +23,18 @@ notesRouter.get('/:id', (req, res) => {
     })
 })
 
-//post a note
+//post a note ... sending a request to get the body text then assign to new variable and save varibale...
+//that variable is then passed with arbitrary 'savedNote' passed and given a response
 notesRouter.post('/', (req, res) => {
     console.log(req.body)
-    res.json({
-        reply: 'note created'
+    const newNote = new Note(req.body)
+    newNote.save().then((savedNote) => {
+        res.json({
+            note: savedNote,
+            success: true
+        })
     })
+
 })
 
 //delete note by ID
