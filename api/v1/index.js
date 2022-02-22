@@ -76,7 +76,9 @@ notesRouter.delete('/:id', (request, response) => {
 notesRouter.put('/:id', (request, response) => {
     const noteId = request.params.id;
     const updatedBody = request.body;
-    Note.findOneAndUpdate(noteId, updatedBody, (err, updatedNote) => {
+    Note.findByIdAndUpdate(noteId, updatedBody, {
+        new: true
+    }, (err, updatedNote) => {
         if(err){
             console.log(err);
         }
@@ -87,7 +89,7 @@ notesRouter.put('/:id', (request, response) => {
         }
         response.json({
             reply: "Note has been updated successfully!",
-            updatedBody
+            updatedNote
         })
     })
     
