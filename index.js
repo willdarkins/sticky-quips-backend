@@ -2,8 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors')
 const app = express();
-const port = 5000;
-const { notesRouter } = require('./api/v1/index')
+const port = process.env.PORT || 5000;
 require ('./db')
 
 //bodyParser middleware to convert JSON in post call
