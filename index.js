@@ -8,6 +8,8 @@ require ('./db')
 //bodyParser middleware to convert JSON in post call
 app.use(express.json())
 
+const { notesRouter } = require("./api/v1/index");
+
 //cors middleware to communicate between front,back and db
 app.use(cors());
 
