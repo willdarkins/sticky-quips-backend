@@ -29,14 +29,45 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 ## Installation
 <br>
 
-`npm start` runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- In the Github repository, copy the SSH key link to clone onto your local device
+- Open the project in your code editor of choice and enter the following command in console:
+  - `npm i`
+  - The following dependencies will being to run:
+    - `body-parser` - `cors` - `dotenv` - `express` - `mongoose`
+- When dependencies have finished installation begin to run your server with the following command in the terminal:
+  - **`npm start`**
+- Now head over to <a href=https://insomnia.rest>Insomnia CORE</a> and begin testing routes:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-The backend and database were build in separate repository.\
-That can be found following **[THIS LINK](https://github.com/willdarkins/sticky-quips-backend)**.
+**`http://stickyquips.herokuapp.com/notes`**
+  - `GET` all notes
+  - `POST` a new note:
+```json
+{
+	"text" : "I have two cats named Daisy and Boris",
+	"link" : "https://google.com"
+}
+```
+**`http://stickyquips.herokuapp.com/notes/:id`**
+  - `GET` note by id
+  - `PUT` to update a note by id
+```json
+{
+	"notes": [
+		{
+			"_id": "62187c443dc23ff220d8151b",
+			"text": "This is a test note",
+			"link": "google.com",
+			"__v": 0
+		}
+	]
+}
+```
+  - `DELETE` note by id
+```json
+{
+	"reply": "delete note by id success"
+}
+```
 
 ## Usage
 
