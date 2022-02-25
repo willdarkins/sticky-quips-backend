@@ -78,7 +78,7 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 	"link" : "https://google.com"
 }
 ```
-<br/>
+
 **`http://stickyquips.herokuapp.com/notes/:id`**
   - `GET` note by id
   - `PUT` to update a note by id
