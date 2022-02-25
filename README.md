@@ -40,13 +40,45 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 
 **`http://stickyquips.herokuapp.com/notes`**
   - `GET` all notes
-  - `POST` a new note:
+```json
+{
+	"notes": [
+		{
+			"_id": "62187c443dc23ff220d8151b",
+			"text": "This is a test note",
+			"link": "google.com",
+			"__v": 0
+		},
+		{
+			"_id": "62187ccc3dc23ff220d8151e",
+			"text": "How about some groceries",
+			"link": "newseasons.com",
+			"__v": 0
+		},
+		{
+			"_id": "62187cd53dc23ff220d81520",
+			"text": "I need cat food",
+			"link": "petco.com",
+			"__v": 0
+		},
+		{
+			"_id": "62187cef3dc23ff220d81525",
+			"text": "Go shopping later",
+			"link": "amazon.com",
+			"__v": 0
+		}
+	]
+}
+```
+
+ - `POST` a new note:
 ```json
 {
 	"text" : "I have two cats named Daisy and Boris",
 	"link" : "https://google.com"
 }
 ```
+<br/>
 **`http://stickyquips.herokuapp.com/notes/:id`**
   - `GET` note by id
   - `PUT` to update a note by id
@@ -68,7 +100,7 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 	"reply": "delete note by id success"
 }
 ```
-
+<br/>
 ## Usage
 
 - When initially loadin the homepage, you'll enounter a black navbar, circular '+' button in the bottom right corner and dispaly message that reads `There are no Sticky Quips to display! 🤷‍♂️`
