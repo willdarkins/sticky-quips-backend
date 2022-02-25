@@ -12,7 +12,7 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 
 * [Badges](#badges)
 * [Installation](#installation)
-* [Usage](#usage)
+* [Database](#database)
 * [Credits](#credits)
 * [License](#license)
 * [Questions](#questions)
@@ -100,17 +100,15 @@ Please follow **[THIS LINK](https://willdarkins.github.io/sticky-quips-frontend/
 	"reply": "delete note by id success"
 }
 ```
-<br/>
-## Usage
-
-- When initially loadin the homepage, you'll enounter a black navbar, circular '+' button in the bottom right corner and dispaly message that reads `There are no Sticky Quips to display! 🤷‍♂️`
-- To begin, click on the `About` link located in the navbar and discover more information about the application.
-- Click the block circular "+" button in the bottom right hand corner to compose your first quip
-- A modal will appear with two textareas; `text` & `link`... Fill in your desired text and paste your associated link
-- Hit the `save` button to maintain your quip, and the top right "x" to exit
-- Quips will populate multi-staggered and colored in the center of the page
-- Click inside the quip to edit, then click out to solidify those changes
-- Clicking the top right "x" of each quip will delete them from the database
+## Database
+The application uses the document-oriented database program Mongodb. Mongoose extension is also utilized to bridge the syntax gap for Javascript.
+There is only one model and that is `Note` whose structure is listed below:
+```json
+const noteSchema = new mongoose.Schema({
+    text: String,
+    link: String
+  });
+```
 
 ## Credits
 Big shout out to <a href = https://github.com/Ileriayo>Ileriayo Adebiyi</a> and his <a href =https://github.com/Ileriayo/markdown-badges>markdown badges repository</a> which made this project all the more beautiful. Thank You.<br>
